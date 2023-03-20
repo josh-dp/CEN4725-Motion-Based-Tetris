@@ -1,12 +1,22 @@
 # CEN4725-Motion-Based-Tetris
 
-To run it you should be able to just clone the repo and open up a terminal and it should open up the venv
+To run first just open up a new venv in the folder you cloned this repo
+
+To run it you should be able to open up a terminal and it should open up the venv
 if it doesn't run the command in a terminal window
+
 ```
 venv\scripts\activate
 ```
 
 then if you are in the venv
+
+run the command 
+```
+pip install -r requirements.txt
+```
+
+then now that dependencies are installed
 
 run the command 
 ```
@@ -26,3 +36,4 @@ ROTATE - thumb up
 RIGHT - pointer finger up
 LEFT - pinky up
 IDLE - no fingers up
+QUIT - press 'q' key

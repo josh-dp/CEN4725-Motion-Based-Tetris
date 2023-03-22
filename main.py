@@ -5,7 +5,8 @@ import pydirectinput
 
 #COMMAND SETUP
 # Down = [1,1,1,1,1]
-# Rotate = [1,0,0,0,0]
+# Rotate Left = [1,1,0,0,0]
+# Rotate Right = [1,0,0,0,1]
 # Idle = [0,0,0,0,0]
 # Right = [0,1,0,0,0]
 # Left= [0,0,0,0,1]
@@ -20,7 +21,7 @@ while True:
     hands, image = detector.findHands(frame)
     framesBetweenInput -= 1
     if hands and framesBetweenInput <= 0:
-        framesBetweenInput = 20
+        framesBetweenInput = 10
         lmlist = hands[0]
         fingerUp = detector.fingersUp(lmlist)
         print(fingerUp);
@@ -29,13 +30,16 @@ while True:
             pydirectinput.press('down')
         if fingerUp==[0,0,0,0,0]:
             cv2.putText(frame, 'STATE: IDLE', (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 1, cv2.LINE_AA)
-        if fingerUp==[1,0,0,0,0]:
-            cv2.putText(frame, 'STATE: ROTATE', (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 1, cv2.LINE_AA)
+        if fingerUp==[1,1,0,0,0]:
+            cv2.putText(frame, 'STATE: ROTATE LEFT', (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 1, cv2.LINE_AA)
+            pydirectinput.press('z')
+        if fingerUp==[1,0,0,0,1]:
+            cv2.putText(frame, 'STATE: ROTATE RIGHT', (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 1, cv2.LINE_AA)
             pydirectinput.press('up')
-        if fingerUp==[0,1,0,0,0]:
+        if fingerUp==[0,0,0,0,1]:
             cv2.putText(frame, 'STATE: RIGHT', (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 1, cv2.LINE_AA)
             pydirectinput.press('right')
-        if fingerUp==[0,0,0,0,1]:
+        if fingerUp==[0,1,0,0,0]:
             cv2.putText(frame, 'STATE: LEFT', (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 1, cv2.LINE_AA)
             pydirectinput.press('left')
     cv2.imshow("Frame", frame)

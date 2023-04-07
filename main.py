@@ -20,7 +20,7 @@ left = {
 }
 right = {
     tuple([0, 1, 0, 0, 0]): ('STATE: RIGHT', 'right'),
-    tuple([1, 1, 0, 0, 0]): ('STATE: ROTATE RIGHT', 'x'),
+    tuple([1, 1, 0, 0, 0]): ('STATE: ROTATE RIGHT', 'up'),
     tuple([1, 1, 1, 1, 1]): ('STATE: HARD DROP', 'space'),
     tuple([1, 0, 0, 0, 0]): ('STATE: DOWN', 'down'),
 }

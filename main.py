@@ -142,7 +142,7 @@ class Matris(object):
         currentInput = idle
 
         if len(hands) == 2 and framesBetweenInput <= 0:
-            framesBetweenInput = 20
+            framesBetweenInput = 15
 
             leftHand = next(filter(lambda hand: hand["type"] == "Left", hands), None)
             rightHand = next(filter(lambda hand: hand["type"] == "Right", hands), None)
@@ -169,6 +169,7 @@ class Matris(object):
         frame = pygame.surfarray.make_surface(frame)
         frame = pygame.transform.rotate(frame, 270)
         frame = pygame.transform.scale(frame, (350, 250))
+        frame = pygame.transform.flip(frame, True, False);
 
         screen.blit(frame, (345,200))
 
